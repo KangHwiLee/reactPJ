@@ -2,19 +2,95 @@
   margin:0;
 }
 
-.header{
-  background-color: #ff6347;
-  height:50px;
+body {
+  font-family:'nanumsquare';
 }
 
-.header a{
-  margin:10px;
-  font-size:20px
+#wrap{
+  margin: 0 auto;
 }
 
-.home{
-  background-color:dodgerblue;
-  height:200px;
+.side{
+  background-color: rgb(233, 227, 227);
+  position: fixed;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  overflow: hidden;
+  z-index: 9999;
+  transition-duration: 0.2s;
+  transition-property: left;
+  padding: 25px;
+}
+
+/* .header{
+  width:15%;
+  min-height: 3vh;
+  padding: 20px;
+  font-weight: 600;
+  font-size : 20px;
+  text-align: center;
+} */
+
+.test2 .active{
+  color:blue
+}
+
+.side a{
+  font-size:20px;
+  color:black;
+  text-decoration-line: none;
+}
+.test1-1{
+  margin:auto;
+  padding-top:20px;
+  text-align: center;
+}
+#profile{width:150px; height:100%;}
+.test3{
+  padding-top: 20px;
+  text-align: center;
+}
+.test3 p{
+  padding-top:10px;
+  font-size: 14px;
+}
+.test2{
+  padding-top:20px;
+  text-align: center;
+}
+.test2 ul{padding:0;  list-style:none;}
+.test2 ul li{padding:10px;}
+
+.container{
+  text-align: center;
+    padding-left: 300px;
+    min-height: 100vh;
+    margin-top: 100px;
+}
+.home {
+  background-color: dodgerblue;
+    height: 200px;
+    width: 75%;
+    margin:auto;
+}
+.header h1{
+  padding-top: 10px;
+}
+
+.list{
+  margin-top:30px;
+  text-align : left;
+  padding-left:20px;
+  padding-right:20px;
+}
+
+
+
+.page {
+  background-color: dodgerblue;
+  height: 200px;
+  color: white;
 }
 .footer{
   background-color:#939697

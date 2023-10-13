@@ -1,0 +1,30 @@
+git push -u origin master
+
+
+
+
+
+
+
+
+
+<Link to={
+                {
+                    pathname:"/param/10"
+                }
+            }>param전송 {'{path variable}'}
+            </Link>
+            <br/>
+            <Link to={
+                {
+                    pathname: "/param",
+                    search:"?q=aa&page=10"
+                }
+            }>param전송(query string)
+            </Link>
+            {nations.map(n => (
+                    <Link to={{
+                        pathname: `/param/${n.name}`,
+                    }}>
+                        {n.name}
+                    </Link>
