@@ -1,7 +1,7 @@
 
 import './App.css';
 // import Component1 from './Component1';
-import Header from './layout/Header';
+import Side from './layout/Side';
 import Home from './layout/Home';
 import Footer from './layout/Footer';
 import Project from './pages/Project';
@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <div id='wrap'>
         <BrowserRouter>
-          <Header/>
+          <Side/>
             <div className='container'>
             <Home/>
             </div>
