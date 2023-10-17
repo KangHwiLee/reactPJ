@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
 
@@ -18,12 +18,21 @@ const Header = () => {
         activeset(newArray);
         console.log(active[0], active[1],active[2])
     }
+    const location = useLocation()
+    let num = 0;
+    useEffect(() => {
+        if(location.pathname == '/content')
+        num = 1;
+        else if(location.pathname == "/project")
+        num = 2;
+        changeActive(num);
+    }) 
 
     return(
         <div className="side">
             <div className="test1">
                 <div className="test1-1">
-                    <img id="profile" src="/img/KakaoTalk_20221213_090608164.png"></img>
+                    <img id="profile" src="/img/profile1.png"></img>
                 </div>
             </div>
             <div className="test3">

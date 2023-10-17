@@ -3,13 +3,7 @@ import './App.css';
 // import Component1 from './Component1';
 import Side from './layout/Side';
 import Home from './layout/Home';
-import Footer from './layout/Footer';
-import Project from './pages/Project';
-import Param1 from './pages/Param1';
-import Content from './pages/Content';
-import ContentDetail from './pages/ContentDetail';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Param2 from './pages/Param2';
 import { useEffect, useState } from 'react';
 import $ from "jquery";
 
