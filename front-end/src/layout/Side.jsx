@@ -16,17 +16,17 @@ const Header = () => {
         }
         newArray[e] = 'active';
         activeset(newArray);
-        console.log(active[0], active[1],active[2])
     }
+
     const location = useLocation()
-    let num = 0;
     useEffect(() => {
-        if(location.pathname == '/content')
+    let num = 0;
+        if(location.pathname == '/content' || location.pathname == '/write')
         num = 1;
         else if(location.pathname == "/project")
         num = 2;
         changeActive(num);
-    }) 
+    }, []) 
 
     return(
         <div className="side">
@@ -46,9 +46,9 @@ const Header = () => {
             </div>
             <div className="test2">
                 <ul>
-                    <li><Link to={"/"} onClick={() => changeActive(0)} className={active[0]}>Home</Link></li>
-                    <li><Link to={"/content"} onClick={() => changeActive(1)} className={active[1]}>Content</Link></li>
-                    <li><Link to={"/project"} onClick={() => changeActive(2)} className={active[2]}>Projects</Link></li>
+                    <li><Link to={"/"} className={active[0]} onClick={() => changeActive(0)}>Home</Link></li>
+                    <li><Link to={"/content"} className={active[1]} onClick={() => changeActive(1)}>Content</Link></li>
+                    <li><Link to={"/project"} className={active[2]} onClick={() => changeActive(2)}>Projects</Link></li>
                 </ul>
             </div>
         </div>

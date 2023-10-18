@@ -4,6 +4,7 @@ import {nation, nations} from "../data/data";
 import Introduce from "../pages/Introduce";
 import Content from "../pages/Content";
 import Project from "../pages/Project";
+import Write from "../content/Write";
 import ContentDetail from "../pages/ContentDetail";
 const Home = () => {
     return(
@@ -12,6 +13,7 @@ const Home = () => {
                     <Route path='/' element={<Introduce/>} />
                     <Route path='/content' element={<Content/>} />
                     <Route path='/content_detail/:id' element={<ContentDetail/>} />
+                    <Route path='/write' element={<Write/>} />
                     <Route path='/project' element={<Project/>} />
                 </Routes>
         </div>

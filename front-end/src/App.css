@@ -179,3 +179,93 @@ body {
   transform: scale(1.2);
   transition-duration: 0.5s;
 }
+
+.text-left{
+  text-align: left;
+}
+
+.project-header h1{
+  margin-bottom: 20px;
+}
+
+.swiper-area{
+  padding-top:60px;
+}
+
+.project-container{
+  line-height: 2;
+}
+
+.project-explain{
+  padding-top:40px;
+  line-height: 2;
+}
+
+.project-explain h2{
+  margin-bottom:20px;
+}
+.project-explain hr{
+  margin-bottom:20px;
+}
+
+.explain-content{
+  padding-bottom: 40px;
+}
+
+.project-header h1{
+  margin-bottom: 20px;
+}
+
+.register-btn {
+  position: absolute;
+  bottom: 10%;
+  right: 12%;
+}
+
+.write-btn {
+  position: absolute;
+  bottom: 4%;
+  right: 12%;
+}
+
+.write-btn button{
+  width:90px;height:30px;background-color: rgb(119, 119, 255);
+  border-radius: 20px;
+  border:0px;
+  color: white;
+}
+
+.register-btn button{
+  width:90px;height:30px;background-color: rgb(119, 119, 255);
+  border-radius: 20px;
+  border:0px;
+  color: white;
+}
+
+.write{
+  text-align: center;
+}
+
+.write hr{
+  height: 1px;
+  background-color: rgb(235, 233, 233);
+  border: 0px;
+}
+
+.write input{
+  width:100%;
+  height:30px;
+  margin-top: 20px;
+  border:0px;
+  font-size: 20px;
+}
+.write textarea{
+  font-family: 'nanumsquare';
+  width:100%;
+  min-height:600px;
+  margin-top: 20px;
+  border:0px;
+  resize:none;
+  overflow:auto;
+  font-size: 16px;
+}

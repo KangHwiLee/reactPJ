@@ -14,7 +14,7 @@ function App() {
     fetch("/test")
       .then(res => res.text())
       .then(m=>setMessage(m))
-      .then(console.log({message}))
+      // .then(console.log({message}))
   })
 
   return (
