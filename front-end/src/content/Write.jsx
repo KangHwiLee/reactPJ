@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { createRef, useEffect, useRef, useState } from 'react';
 
 const Write = () => {
@@ -43,12 +44,14 @@ const Write = () => {
             var arr = [];
             var img_arr = [];
             var img_index = 1;
-            var index = 1;
+            var index = 0;
             var first_line = p.outerHTML;
 
             var f_end = first_line.indexOf("<div", 5)
-            var first_line = first_line.substring(0,f_end);
+            if(f_end > -1)
+            first_line = first_line.substring(0,f_end);
             first_line = first_line.replace('contenteditable="true"', "")
+            if(first_line.indexOf('<img src="data') > -1){
             while(first_line.indexOf('<img src="data') > -1){  //이미지 들어갈곳 생성
                 var start = first_line.indexOf('<img src="data')
                 var end = first_line.indexOf('>', start);
@@ -59,8 +62,12 @@ const Write = () => {
                 arr.push(first_line);
                 img_index++;
               }
-
+            }else{
+                arr.push(first_line)
+            }
+            
               for (let tag of p.children) {     //글 순회 시작
+                if(index == 0) continue;
                 var test = tag.outerHTML;       //tag를 string으로 변환
                 if(tag.tagName == 'DIV'){       //이미지만 있는 줄인지 검사
                     if(tag.children.length != 0){   //글 + 이미지인지 검사
@@ -86,9 +93,24 @@ const Write = () => {
                     img_index ++;
                 }
                 }
+                if(f_end > -1)
                 arr.push("</div>")
+                console.log(arr);
+                postUser(arr)
                 console.log(img_arr)
         }
+
+        async function postUser(arr) {
+            try {
+            // POST 요청은 body에 실어 보냄
+              await axios.post('/api/content_wrtie', {
+                  title: title,
+                  content: arr
+              });
+            } catch (e) {
+              console.error(e);
+            }
+          }
 
     return (
         <div className="project-header text-left">

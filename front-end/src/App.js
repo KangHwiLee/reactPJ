@@ -11,7 +11,7 @@ import $ from "jquery";
 function App() {
   const [message, setMessage] = useState("")
   useEffect(()=>{
-    fetch("/test")
+    fetch("/api/test")
       .then(res => res.text())
       .then(m=>setMessage(m))
       // .then(console.log({message}))
