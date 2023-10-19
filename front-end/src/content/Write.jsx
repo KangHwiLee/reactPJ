@@ -1,28 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { createRef, useEffect, useRef, useState } from 'react';
 
 const Write = () => {
 
-    /* const focusTest = useRef(null);
-    useEffect(()=> {
-        focusTest.current.focus();
-    }) */
+    const textareaRef = createRef();
 
-    const [values, setValues] = useState({
-        title: "",
-        content: "",
-      })
+    const [line, setLine] = useState(1)
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
       
       const handleChange = e => {
-          setValues({
-              ...values,
-              [e.target.name]: e.target.value,
-            })
-            console.log(values);
+          setTitle(e.target.value)
+            console.log(title);
         }
-
-        const markup = () => {
-            return {__html : <img src=""></img>}
-        };
 
         const [imgSrc, setImgSrc] = useState([]);
         const fileAdd = (fileBlob)=>{
@@ -38,16 +27,67 @@ const Write = () => {
                                                   // 이번과 같은 경우는 setState로 img값 받기
                         var newArray = [...imgSrc];     
                         newArray.push(reader.result)
-                        console.log(newArray);
+                        const div = document.getElementById('write-content');
+                        const img = document.createElement('img')
+                        img.style.width = '20%'
+                        img.src = reader.result
+                        div.append(img)
                         setImgSrc(newArray);
-                        setValues({
-                            ...values,
-                            content: values.content+`<img src="${reader.result}" alt="Image" />`,
-                          })
-                        // setImgSrc(reader.result);
                         resolve();
                     };
                   }); 
+        }
+
+        const test = () => {
+            var p = document.getElementById('write-content');
+            var arr = [];
+            var img_arr = [];
+            var img_index = 1;
+            var index = 1;
+            var first_line = p.outerHTML;
+
+            var f_end = first_line.indexOf("<div", 5)
+            var first_line = first_line.substring(0,f_end);
+            first_line = first_line.replace('contenteditable="true"', "")
+            while(first_line.indexOf('<img src="data') > -1){  //이미지 들어갈곳 생성
+                var start = first_line.indexOf('<img src="data')
+                var end = first_line.indexOf('>', start);
+                var img = first_line.substring(start, end+1)
+                img_arr.push(img.replace('<img src="', "").replace('" style="width: 20%;"', ""));
+                first_line = first_line.replace(img, '<img '+img_index+'>');
+                console.log("변환 후 : ", first_line)
+                arr.push(first_line);
+                img_index++;
+              }
+
+              for (let tag of p.children) {     //글 순회 시작
+                var test = tag.outerHTML;       //tag를 string으로 변환
+                if(tag.tagName == 'DIV'){       //이미지만 있는 줄인지 검사
+                    if(tag.children.length != 0){   //글 + 이미지인지 검사
+                   while(test.indexOf('<img src="data') > -1){  //이미지 들어갈곳 생성
+                     var start = test.indexOf('<img src="data')
+                     var end = test.indexOf('>', start);
+                     var img = test.substring(start, end+1)
+                     img_arr.push(img.replace('<img src="',"").replace('" style="width: 20%;"', ""));
+                     test = test.replace(img, '<img '+img_index+'>');
+                     console.log("변환 후 : ", test)
+                     arr.push(test);
+                     img_index ++;
+                   }
+                }else 
+                    arr.push(test);
+                }else if(tag.tagName == 'IMG'){
+                    var start = test.indexOf('<img src="data')
+                     var end = test.indexOf('>', start);
+                     var img = test.substring(start, end+1)
+                     img_arr.push(img.replace('<img src="', "").replace('" style="width: 20%;"', ""));
+                     test = test.replace(img, '<img '+img_index+'>');
+                    arr.push(test);
+                    img_index ++;
+                }
+                }
+                arr.push("</div>")
+                console.log(img_arr)
         }
 
     return (
@@ -59,17 +99,15 @@ const Write = () => {
                 <form>
                     <input type="text" name="title" 
                     placeholder="제목을 입력하세요" 
-                    value={values.title}
+                    value={title}
                     onChange={handleChange}
                     />
                     <hr/>
-                    <textarea 
-                    /* ref={focusTest} */ 
+                    <div id="write-content" className='contentEdit text-left'
+                    contentEditable={true} 
+                    ref={textareaRef}
                     name='content'
-                    placeholder='내용을 입력하세요'
-                    value={values.content}
-                    onChange={handleChange}
-                    ></textarea>
+                    ></div>
                 </form>
             </div>
             <label htmlFor="inputFile">사진 추가 +</label>
@@ -77,12 +115,10 @@ const Write = () => {
         id="inputFile" 
         type="file" 
         name="file" 
-        accept='image/*'  // input을 이미지를 받는 버튼으로 변경(type="file")
-        style={{"display":"none"}} // 기본 이미지는 못생겼으니 숨기고 label로 style 주기
-        onChange={(e)=>{fileAdd(e.target.files[0])}}/> // 상태가 바뀐 input의 files[0]은
-        												//fileChange 함수에 의해 처리됨
-    <img src={imgSrc[0]}/> // 이제 귀여운 고양이 사진이 들어올 차례
-
+        accept='image/*' 
+        style={{"display":"none"}} 
+        onChange={(e)=>{fileAdd(e.target.files[0])}}/>
+        												
             <div className="write-btn">
                 <button onClick={() => test()}>글쓰기</button>
             </div>

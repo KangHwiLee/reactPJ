@@ -223,9 +223,7 @@ body {
 }
 
 .write-btn {
-  position: absolute;
-  bottom: 4%;
-  right: 12%;
+  float:right;
 }
 
 .write-btn button{
@@ -259,7 +257,7 @@ body {
   border:0px;
   font-size: 20px;
 }
-.write textarea{
+.write .contentEdit{
   font-family: 'nanumsquare';
   width:100%;
   min-height:600px;
@@ -268,4 +266,5 @@ body {
   resize:none;
   overflow:auto;
   font-size: 16px;
+  padding : 20px;
 }
