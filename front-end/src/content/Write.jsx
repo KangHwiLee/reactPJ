@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React, { createRef, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const Write = () => {
 
+
+    const navigate = useNavigate();
     const textareaRef = createRef();
 
     const [line, setLine] = useState(1)
@@ -11,7 +14,6 @@ const Write = () => {
       
       const handleChange = e => {
           setTitle(e.target.value)
-            console.log(title);
         }
 
         const [imgSrc, setImgSrc] = useState([]);
@@ -43,74 +45,84 @@ const Write = () => {
             var p = document.getElementById('write-content');
             var arr = [];
             var img_arr = [];
-            var img_index = 1;
             var index = 0;
             var first_line = p.outerHTML;
-
             var f_end = first_line.indexOf("<div", 5)
-            if(f_end > -1)
+
+            const tt = (text) => {
+                        var start = text.indexOf('<img src="data')
+                        var end = text.indexOf('>', start);
+                        var img = text.substring(start, end+1)
+                        img_arr.push(img.replace('<img src="',"").replace('" style="width: 20%;"', ""));
+                        text = text.replace(img, '<img src=""/>');
+                        return text;
+                       }
+
+            if(f_end > -1)          //첫째줄만 있는지 검사
             first_line = first_line.substring(0,f_end);
             first_line = first_line.replace('contenteditable="true"', "")
             if(first_line.indexOf('<img src="data') > -1){
             while(first_line.indexOf('<img src="data') > -1){  //이미지 들어갈곳 생성
-                var start = first_line.indexOf('<img src="data')
-                var end = first_line.indexOf('>', start);
-                var img = first_line.substring(start, end+1)
-                img_arr.push(img.replace('<img src="', "").replace('" style="width: 20%;"', ""));
-                first_line = first_line.replace(img, '<img '+img_index+'>');
-                console.log("변환 후 : ", first_line)
-                arr.push(first_line);
-                img_index++;
-              }
+                first_line = tt(first_line)
+                // var start = first_line.indexOf('<img src="data')
+                // var end = first_line.indexOf('>', start+1);
+                // var img = first_line.substring(start, end+1)
+                // img_arr.push(img.replace('<img src="', "").replace('" style="width: 20%;"', ""));
+                // first_line = first_line.replace(img, '<img src=""/>');
+            }
+            arr.push(first_line);
             }else{
                 arr.push(first_line)
             }
-            
               for (let tag of p.children) {     //글 순회 시작
-                if(index == 0) continue;
+                if(index == 0) {
+                    index ++;
+                    continue;
+                }       //img arr, return test
+                
                 var test = tag.outerHTML;       //tag를 string으로 변환
                 if(tag.tagName == 'DIV'){       //이미지만 있는 줄인지 검사
                     if(tag.children.length != 0){   //글 + 이미지인지 검사
                    while(test.indexOf('<img src="data') > -1){  //이미지 들어갈곳 생성
-                     var start = test.indexOf('<img src="data')
-                     var end = test.indexOf('>', start);
-                     var img = test.substring(start, end+1)
-                     img_arr.push(img.replace('<img src="',"").replace('" style="width: 20%;"', ""));
-                     test = test.replace(img, '<img '+img_index+'>');
-                     console.log("변환 후 : ", test)
-                     arr.push(test);
-                     img_index ++;
-                   }
+                    test = tt(test)
+                    //  var start = test.indexOf('<img src="data')
+                    //  var end = test.indexOf('>', start);
+                    //  var img = test.substring(start, end+1)
+                    //  img_arr.push(img.replace('<img src="',"").replace('" style="width: 20%;"', ""));
+                    //  test = test.replace(img, '<img src=""/>');
+                    }
+                    arr.push(test);
                 }else 
                     arr.push(test);
-                }else if(tag.tagName == 'IMG'){
-                    var start = test.indexOf('<img src="data')
-                     var end = test.indexOf('>', start);
-                     var img = test.substring(start, end+1)
-                     img_arr.push(img.replace('<img src="', "").replace('" style="width: 20%;"', ""));
-                     test = test.replace(img, '<img '+img_index+'>');
-                    arr.push(test);
-                    img_index ++;
+                }else if(tag.tagName == 'IMG' && f_end > -1){
+                    // var start = test.indexOf('<img src="data')
+                    //  var end = test.indexOf('>', start);
+                    //  var img = test.substring(start, end+1)
+                    //  img_arr.push(img.replace('<img src="', "").replace('" style="width: 20%;"', ""));
+                    //  test = test.replace(img, '<img src=""/>');
+                    test = tt(test);
+                     arr.push(test);
+                    }
                 }
-                }
-                if(f_end > -1)
+                if(f_end > -1)          //첫째줄만 있으면 </div>추가안함
                 arr.push("</div>")
                 console.log(arr);
-                postUser(arr)
-                console.log(img_arr)
+                fetch("/api/content_write", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    title: title,
+                    content: arr,
+                    img : img_arr
+                }),
+                }).then((response) => {
+                    if(response.status == 200)
+                    navigate('/content')
+                })
+                
         }
-
-        async function postUser(arr) {
-            try {
-            // POST 요청은 body에 실어 보냄
-              await axios.post('/api/content_wrtie', {
-                  title: title,
-                  content: arr
-              });
-            } catch (e) {
-              console.error(e);
-            }
-          }
 
     return (
         <div className="project-header text-left">
