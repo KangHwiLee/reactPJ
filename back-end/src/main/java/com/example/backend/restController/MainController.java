@@ -112,12 +112,12 @@ public class MainController {
     @GetMapping("/content/paging")
     public HashMap<String, Object> content_paging(@PageableDefault(size=7, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
         Page<Content> pages = contentRepository.findAll(pageable);
-        int startPage = Math.max(1,pages.getPageable().getPageNumber() - 4);
-        int endPage = startPage+4;
-        int realendPage = pages.getTotalPages();
+        int endPage = (int)Math.ceil(((double)pages.getPageable().getPageNumber()+1)/5) *5;
+        int startPage = endPage-4;
+        int realEndPage = pages.getTotalPages();
         boolean prev = startPage > 1;
-        boolean next = endPage < realendPage;
-        endPage = Math.min(realendPage, endPage);
+        boolean next = endPage < realEndPage;
+        endPage = Math.min(realEndPage, endPage);
         System.out.println(pages.getPageable());
         HashMap<String, Object> map = new HashMap<>();
         map.put("startPage", startPage);

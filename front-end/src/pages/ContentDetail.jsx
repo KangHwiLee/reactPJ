@@ -3,18 +3,23 @@ import { Link, useParams } from "react-router-dom";
 import {nation, nations} from "../data/data";
 const Home = () => {
     const { id } = useParams();
-    console.log(id);
+
+
+    
     return(
-        <div className="home">
-            <div className="header">
-                <h3>여기 소제목?</h3>
-                <h1>여기 메인제목</h1>
-                {/* <Prop name="name1" age="11"/> */}
+            <div className="project-header text-left">
+            <div className="write">
+                <form>
+                    <h1>제목입니다</h1>
+                    <hr/>
+                    <div id="write-content" className='contentEdit text-left'
+                    name='content'
+                    >
+                        
+                    </div>
+                </form>
             </div>
-            <div className="content">
-                
-            </div>
-        </div>
+          </div>
     )
 }
 

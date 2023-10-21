@@ -11,6 +11,7 @@ const Content = () => {
     const [next, setNext] = useState(false);
     const [startPage, setStartPage] = useState(0);
     const [endPage, setEndPage] = useState(0);
+    const [nowPage, setPage] = useState(0);
     useEffect(() => {
         paging(0)
     }, [])
@@ -30,6 +31,7 @@ const paging = (n) => {
             for(let i=0; i<page.pages.content.length; i++){
                 array2.push({
                     title : page.pages.content[i].title,
+                    id : page.pages.content[i].id,
                     created_at : page.pages.content[i].created_at
                 })
             }
@@ -38,6 +40,7 @@ const paging = (n) => {
             setNext(page.next);
             setStartPage(page.startPage);
             setEndPage(page.endPage);
+            setPage(page.pages.number+1);
         })
 }
 
@@ -51,7 +54,8 @@ const navigate = useNavigate();
           </div>
             <div>
                 {contentArray.map((arr) => {
-                    var a = <div key={arr.id} className='list' onClick={() => navigate('/content_detail/1')}>
+                    console.log(arr.id)
+                    var a = <div key={arr.id} className='list' onClick={() => navigate(`/content_detail/${arr.id}`)}>
                         <h3>{arr.title}</h3>
                         <p>{arr.created_at}</p>
                         <hr/>
@@ -61,9 +65,9 @@ const navigate = useNavigate();
             </div>
             <div className="pagination">
                 <ul>
-                    {prev === true ? <li onClick={() => paging(startPage-1)}>&lt;</li> : ""}
+                    {prev === true ? <li onClick={() => paging(startPage-2)}>&lt;</li> : ""}
                     {pageArray.map((i) => {
-                        var a = <li key={i} onClick={() => paging(i-1)}>{i}</li>
+                        var a = <li key={i} onClick={() => paging(i-1)} className={nowPage == i ? 'active' : ''}>{i}</li>
                         return a
                     })}
                     {next === true ? <li onClick={() => paging(endPage)}>&gt;</li> : ""}
