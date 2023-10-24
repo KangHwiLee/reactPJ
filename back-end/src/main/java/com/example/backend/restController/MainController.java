@@ -18,10 +18,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api")
@@ -68,7 +65,6 @@ public class MainController {
                 try {
                     // Base64 데이터 URL을 디코드하여 이진 이미지 데이터로 변환
                     String base64Image = item.split(",")[1];
-                    System.out.println(base64Image);
                     byte[] imageBytes = Base64.getMimeDecoder().decode(base64Image);
 
                     // 이미지를 저장할 디렉토리 설정
@@ -85,7 +81,8 @@ public class MainController {
                     String filename = uuid+".png"; // 이미지 파일명
                     Path filePath = Paths.get(uploadDirectory, filename);
                     Files.write(filePath, imageBytes);
-                    img_arr.put(index, filePath);
+                    char quotes = '"';
+                    img_arr.put(index, filename);
                     index ++;
                 } catch (IOException e) {
                     System.out.println(e);
@@ -93,7 +90,6 @@ public class MainController {
                 }
             }
         }
-
 
 //        Content content = Content.builder()
 //               .title(title)
@@ -126,9 +122,13 @@ public class MainController {
         map.put("prev", prev);
         map.put("next", next);
 
-
-
         return map;
+    }
+
+    @GetMapping("/content/detail/{id}")
+    public Content content_detail(@PathVariable long id){
+        Content content = contentRepository.findById(id).orElseThrow(NullPointerException::new);
+        return content;
     }
 
 }

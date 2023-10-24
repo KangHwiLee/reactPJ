@@ -64,11 +64,6 @@ const Write = () => {
             if(first_line.indexOf('<img src="data') > -1){
             while(first_line.indexOf('<img src="data') > -1){  //이미지 들어갈곳 생성
                 first_line = tt(first_line)
-                // var start = first_line.indexOf('<img src="data')
-                // var end = first_line.indexOf('>', start+1);
-                // var img = first_line.substring(start, end+1)
-                // img_arr.push(img.replace('<img src="', "").replace('" style="width: 20%;"', ""));
-                // first_line = first_line.replace(img, '<img src=""/>');
             }
             arr.push(first_line);
             }else{
@@ -85,21 +80,11 @@ const Write = () => {
                     if(tag.children.length != 0){   //글 + 이미지인지 검사
                    while(test.indexOf('<img src="data') > -1){  //이미지 들어갈곳 생성
                     test = tt(test)
-                    //  var start = test.indexOf('<img src="data')
-                    //  var end = test.indexOf('>', start);
-                    //  var img = test.substring(start, end+1)
-                    //  img_arr.push(img.replace('<img src="',"").replace('" style="width: 20%;"', ""));
-                    //  test = test.replace(img, '<img src=""/>');
                     }
                     arr.push(test);
                 }else 
                     arr.push(test);
                 }else if(tag.tagName == 'IMG' && f_end > -1){
-                    // var start = test.indexOf('<img src="data')
-                    //  var end = test.indexOf('>', start);
-                    //  var img = test.substring(start, end+1)
-                    //  img_arr.push(img.replace('<img src="', "").replace('" style="width: 20%;"', ""));
-                    //  test = test.replace(img, '<img src=""/>');
                     test = tt(test);
                      arr.push(test);
                     }
@@ -154,7 +139,7 @@ const Write = () => {
         onChange={(e)=>{fileAdd(e.target.files[0])}}/>
         												
             <div className="write-btn">
-                <button onClick={() => test()}>글쓰기</button>
+                <button onClick={() => test()}>등록</button>
             </div>
         </div>
     );

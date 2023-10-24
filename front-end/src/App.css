@@ -271,6 +271,7 @@ body {
 }
 .write .contentEdit img{
   margin:0px 5px 0px 5px;
+  width:20%;
 }
 .pagination{
   width: 100%;
