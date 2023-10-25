@@ -3,8 +3,7 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 let page;
 
-const Content = () => {
-    const { p_category } = useParams();
+const Skill = () => {
     const [pageArray, setPageArray] = useState([]);
     const [contentArray, setContentArray] = useState([]);
     const [prev, setPrev] = useState(false);
@@ -14,10 +13,10 @@ const Content = () => {
     const [nowPage, setPage] = useState(0);
     useEffect(() => {
         paging(0)
-    }, [p_category])
+    }, [])
 
 const paging = (n) => {
-    fetch("/api/content/paging?page="+n+"&category="+p_category)
+    fetch("/api/skill/paging")
         .then(response => {return response.json()})
         .then(json => {
             page = json;
@@ -54,7 +53,7 @@ const navigate = useNavigate();
           </div>
             <div>
                 {contentArray.map((arr) => {
-                    var a = <div key={arr.id} className='list' onClick={() => navigate(`/content_detail/${arr.id}`)}>
+                    var a = <div key={arr.id} className='list' onClick={() => navigate(`/skill${arr.id}`)}>
                         <h3>{arr.title}</h3>
                         <p>{arr.created_at}</p>
                         <hr/>
@@ -79,4 +78,4 @@ const navigate = useNavigate();
     );
 }
 
-export default Content;
+export default Skill;

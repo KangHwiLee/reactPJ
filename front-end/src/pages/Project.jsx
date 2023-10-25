@@ -55,11 +55,11 @@ const test2 = (n) => {
               onSlideChange={() => console.log('slide change')}
               onSwiper={(swiper) => console.log(swiper)}
               >
-              <SwiperSlide><img src="/img/pft/air1.png" style={{width:"400px"}} onClick={() => test(1)}/><p>스노우멜트 모니터링</p></SwiperSlide>
-              <SwiperSlide><img src="/img/pft/air1.png" style={{width:"400px"}} onClick={() => test(2)}/><p>CCTV 웹 스트리밍</p></SwiperSlide>
-              <SwiperSlide><img src="/img/pft/air1.png" style={{width:"400px"}} onClick={() => test(3)}/><p>미세먼지 모니터링</p></SwiperSlide>
-              <SwiperSlide><img src="/img/pft/air1.png" style={{width:"400px"}} onClick={() => test(4)}/><p>캘린더</p></SwiperSlide>
-              <SwiperSlide><img src="/img/pft/air1.png" style={{width:"400px"}} onClick={() => test(5)}/><p>안전점검일지</p></SwiperSlide>
+              <SwiperSlide><img src="/img/pft/snow1.png" style={{width:"400px", height:"200px"}} onClick={() => test(1)}/><p>스노우멜트 모니터링</p></SwiperSlide>
+              <SwiperSlide><img src="/img/pft/cctv1.png" style={{width:"400px", height:"200px"}} onClick={() => test(2)}/><p>CCTV 웹 스트리밍</p></SwiperSlide>
+              <SwiperSlide><img src="/img/pft/air1.png" style={{width:"400px", height:"200px"}} onClick={() => test(3)}/><p>미세먼지 모니터링</p></SwiperSlide>
+              <SwiperSlide><img src="/img/pft/cal1.png" style={{width:"400px", height:"200px"}} onClick={() => test(4)}/><p>캘린더</p></SwiperSlide>
+              <SwiperSlide><img src="/img/pft/report1.png" style={{width:"400px", height:"200px"}} onClick={() => test(5)}/><p>안전점검일지</p></SwiperSlide>
               <br></br>
             </Swiper>
           </div>

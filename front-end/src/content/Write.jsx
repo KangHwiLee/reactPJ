@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { createRef, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
+import $ from "jquery";
 
 const Write = () => {
 
@@ -41,72 +42,33 @@ const Write = () => {
                   }); 
         }
 
-        const test = () => {
-            var p = document.getElementById('write-content');
-            var arr = [];
+        const write = () => {
             var img_arr = [];
-            var index = 0;
-            var first_line = p.outerHTML;
-            var f_end = first_line.indexOf("<div", 5)
-
-            const tt = (text) => {
-                        var start = text.indexOf('<img src="data')
-                        var end = text.indexOf('>', start);
-                        var img = text.substring(start, end+1)
-                        img_arr.push(img.replace('<img src="',"").replace('" style="width: 20%;"', ""));
-                        text = text.replace(img, '<img src=""/>');
-                        return text;
-                       }
-
-            if(f_end > -1)          //첫째줄만 있는지 검사
-            first_line = first_line.substring(0,f_end);
-            first_line = first_line.replace('contenteditable="true"', "")
-            if(first_line.indexOf('<img src="data') > -1){
-            while(first_line.indexOf('<img src="data') > -1){  //이미지 들어갈곳 생성
-                first_line = tt(first_line)
-            }
-            arr.push(first_line);
-            }else{
-                arr.push(first_line)
-            }
-              for (let tag of p.children) {     //글 순회 시작
-                if(index == 0) {
-                    index ++;
-                    continue;
-                }       //img arr, return test
-                
-                var test = tag.outerHTML;       //tag를 string으로 변환
-                if(tag.tagName == 'DIV'){       //이미지만 있는 줄인지 검사
-                    if(tag.children.length != 0){   //글 + 이미지인지 검사
-                   while(test.indexOf('<img src="data') > -1){  //이미지 들어갈곳 생성
-                    test = tt(test)
-                    }
-                    arr.push(test);
-                }else 
-                    arr.push(test);
-                }else if(tag.tagName == 'IMG' && f_end > -1){
-                    test = tt(test);
-                     arr.push(test);
-                    }
-                }
-                if(f_end > -1)          //첫째줄만 있으면 </div>추가안함
-                arr.push("</div>")
-                console.log(arr);
-                fetch("/api/content_write", {
+            const img_list = document.getElementsByTagName('img');
+            
+            var category = $("select[name=category]").val();
+            console.log(img_list)
+            for(let i = 1; i < img_list.length; i++)  {
+                img_arr.push(img_list[i].src)
+                img_list[i].src = "";
+              }
+              const content = document.getElementById("write-content").innerHTML;
+              fetch("/api/content/write", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     title: title,
-                    content: arr,
-                    img : img_arr
+                    content: content,
+                    img : img_arr,
+                    category : category
                 }),
                 }).then((response) => {
                     if(response.status == 200)
-                    navigate('/content')
+                    navigate(`/content/${1}`)
                 })
-                
+            
         }
 
     return (
@@ -116,6 +78,11 @@ const Write = () => {
                 <br/>
             <div className="write">
                 <form>
+                    <select name='category'>
+                        <option value="0">카테고리 선택</option>
+                        <option value="1">스프링</option>
+                        <option value="2">리액트</option>
+                    </select>
                     <input type="text" name="title" 
                     placeholder="제목을 입력하세요" 
                     value={title}
@@ -139,7 +106,7 @@ const Write = () => {
         onChange={(e)=>{fileAdd(e.target.files[0])}}/>
         												
             <div className="write-btn">
-                <button onClick={() => test()}>등록</button>
+                <button onClick={() => write()}>등록</button>
             </div>
         </div>
     );

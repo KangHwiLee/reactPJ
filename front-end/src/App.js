@@ -9,13 +9,6 @@ import $ from "jquery";
 
 
 function App() {
-  const [message, setMessage] = useState("")
-  useEffect(()=>{
-    fetch("/api/test")
-      .then(res => res.text())
-      .then(m=>setMessage(m))
-      // .then(console.log({message}))
-  })
 
   return (
     <div className="App">

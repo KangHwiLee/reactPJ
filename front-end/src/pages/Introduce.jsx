@@ -6,6 +6,7 @@ const Content = () => {
     /* span 글씨 사이즈 */
     const h_span = {fontSize:'18px'}
     const contents_calc = {width: 'calc(50% - 40px)'}
+    const font_weight_550 = {fontWeight:'550'}
     const gitOpen = () => {
         window.open("https://github.com/KangHwiLee/KangHwiLee")
     }
@@ -136,9 +137,9 @@ const Content = () => {
                 <div className="introduce-contents left">
                     <h2>Carrer</h2>
                     <hr/>
-                    <p><h4 style={inline_h}>기업명</h4> : 엔서치랩</p>
-                    <p><h4 style={inline_h}>기간</h4> : 2022-01-17 ~ 현재</p>
-                    <p><h4 style={inline_h}>업무</h4> : 웹 백엔드 & 프론트엔드, 서버관리</p>
+                    <p><span style={font_weight_550}>기업명</span> : 엔서치랩</p>
+                    <p><span style={font_weight_550}>기간</span> : 2022-01-17 ~ 현재</p>
+                    <p><span style={font_weight_550}>업무</span> : 웹 백엔드 & 프론트엔드, 서버관리</p>
                 </div>
                 <div className="introduce-contents right">
                     <h2>Projects</h2>

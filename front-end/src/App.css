@@ -30,6 +30,11 @@ body {
   .container{
     padding:0px;
   }
+  .project .swiper-slide:hover{
+    z-index: 100;
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+  }
 }
 @media(min-width:769px){
   .container{
@@ -75,7 +80,9 @@ body {
 }
 .test2 ul{padding:0;  list-style:none;}
 .test2 ul li{padding:10px;}
-
+#content-menu{
+  line-height: 2;
+}
 .container{
   text-align: center;
     min-height: 100vh;
@@ -175,12 +182,6 @@ body {
   cursor: pointer;
 }
 
-.project .swiper-slide:hover{
-  z-index: 100;
-  transform: scale(1.2);
-  transition-duration: 0.5s;
-}
-
 .text-left{
   text-align: left;
 }
@@ -249,6 +250,10 @@ body {
   height: 1px;
   background-color: rgb(235, 233, 233);
   border: 0px;
+}
+
+.write select{
+  float:left;
 }
 
 .write input{

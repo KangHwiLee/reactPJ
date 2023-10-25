@@ -3,10 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
 
-    const [active, activeset] = useState(["active","",""]);
+    const [active, activeset] = useState(["active","","","","","",""]);
 
     const changeActive = (e) => {
-        console.log(e)
         // const nodes = [...e.target.parentElement.children];
         // const index = nodes.indexOf(e.target);
         // console.log(index)
@@ -14,6 +13,9 @@ const Header = () => {
         for(var i=0; i<newArray.length; i++){
             newArray[i] = '';
         }
+
+
+
         newArray[e] = 'active';
         activeset(newArray);
     }
@@ -21,13 +23,27 @@ const Header = () => {
     const location = useLocation()
     useEffect(() => {
     let num = 0;
-        if(location.pathname == '/content' || location.pathname == '/write')
+        if(location.pathname == "/project")
         num = 1;
-        else if(location.pathname == "/project")
-        num = 2;
+        else if (location.pathname == "/content/1") num = 3;
+        else if (location.pathname == "/content/2") num = 4;
+        else if (location.pathname == "/content/3") num = 5;
+        else if (location.pathname == "/skill") num = 6;
+        console.log(num)
+        if(num > 1){
+            console.log(num)
+            var div = document.getElementById("content-menu")
+            div.style.display = "block";
+        }
         changeActive(num);
     }, []) 
 
+    const test = () => {
+        var div = document.getElementById("content-menu")
+        if(div.style.display == 'block') div.style.display = 'none';
+        else
+        div.style.display = "block";
+    }
     return(
         <div className="side">
             <div className="test1">
@@ -47,8 +63,14 @@ const Header = () => {
             <div className="test2">
                 <ul>
                     <li><Link to={"/"} className={active[0]} onClick={() => changeActive(0)}>Home</Link></li>
-                    <li><Link to={"/content"} className={active[1]} onClick={() => changeActive(1)}>Content</Link></li>
-                    <li><Link to={"/project"} className={active[2]} onClick={() => changeActive(2)}>Projects</Link></li>
+                    <li><a className={active[2]} onClick={() => test()} style={{cursor: "pointer"}}>Content</a></li>
+                        <div style={{display:"none"}} id="content-menu">
+                            <Link to={`/content/${1}`} className={active[3]} onClick={() => changeActive(3)}><p style={{fontSize:"14px"}}>전체</p></Link>
+                            <Link to={`/content/${2}`} className={active[4]} onClick={() => changeActive(4)}><p style={{fontSize:"14px"}}>스프링</p></Link>
+                            <Link to={`/content/${3}`} className={active[5]} onClick={() => changeActive(5)}><p style={{fontSize:"14px"}}>리액트</p></Link>
+                            <Link to={`/skill`} className={active[6]} onClick={() => changeActive(6)}><p style={{fontSize:"14px"}}>SKILL</p></Link>
+                        </div>
+                    <li><Link to={"/project"} className={active[1]} onClick={() => changeActive(1)}>Projects</Link></li>
                 </ul>
             </div>
         </div>
