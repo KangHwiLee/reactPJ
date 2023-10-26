@@ -11,7 +11,7 @@ on:
   push:
     branches: [ "master" ]
     paths:
-    - "backend-directory/**"
+      - "backend-directory/**"
   pull_request:
     branches: [ "master" ]
   
