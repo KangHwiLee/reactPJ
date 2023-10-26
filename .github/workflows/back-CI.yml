@@ -30,6 +30,6 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x back-end/gradlew
     - name: Build with Gradle
+      working-directory: back-end
       run: 
-        cd back-end
         ./back-end/gradlew build
