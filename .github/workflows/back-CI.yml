@@ -27,11 +27,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 17
-    - name: move directory
-      run: cd ./back-end
-    - name: directory search
-      run: ls -al
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: chmod +x back-end/gradlew
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./back-end/gradlew build
