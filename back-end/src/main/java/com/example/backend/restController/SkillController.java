@@ -54,6 +54,6 @@ public class SkillController {
         double cpuUsage = osBean.getSystemCpuLoad() * 100;
         System.out.println(cpuUsage);
         return (int)cpuUsage;
-    }
+    }  
 
 }
