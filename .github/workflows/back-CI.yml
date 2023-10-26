@@ -9,10 +9,11 @@ name: Java CI with Gradle
 
 on:
   push:
+    paths:
+      - 'backend-directory/**'
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
 permissions:
   contents: read
 
