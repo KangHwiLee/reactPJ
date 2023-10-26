@@ -42,7 +42,7 @@ const Skill1 = () => {
         fetch("/api/skill/title/"+id)
         .then(response => {return response.json()})
         .then(json => {
-            console.log(json)
+            console.log(json) 
             $('form h1').html(json.title)
         })
         
