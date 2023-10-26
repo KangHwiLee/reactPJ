@@ -15,7 +15,7 @@ import java.util.UUID;
 @Service
 public class ContentService {
 
-    public JSONObject img_upload(Object imgList){
+    public JSONObject img_upload(Object imgList, Long id){
         JSONObject img_arr = new JSONObject();
         if (imgList instanceof List) {
             // List로 형변환
@@ -30,7 +30,7 @@ public class ContentService {
                     byte[] imageBytes = Base64.getMimeDecoder().decode(base64Image);
 
                     // 이미지를 저장할 디렉토리 설정
-                    String uploadDirectory = "C:/var/webapps/upload/react";
+                    String uploadDirectory = "C:/var/webapps/upload/react/"+id;
 
                     // 디렉토리가 없으면 생성
                     Path directoryPath = Paths.get(uploadDirectory);
@@ -43,7 +43,7 @@ public class ContentService {
                     String filename = uuid + ".png"; // 이미지 파일명
                     Path filePath = Paths.get(uploadDirectory, filename);
                     Files.write(filePath, imageBytes);
-                    img_arr.put(index, filename);
+                    img_arr.put(index, id+"/"+filename);
                     index++;
                 } catch (IOException e) {
                     System.out.println(e);

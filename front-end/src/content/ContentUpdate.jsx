@@ -61,10 +61,8 @@ const ContentUpdate = () => {
 
           const content = document.getElementById("write-content").innerHTML;
 
-          console.log(img_arr)
-          console.log(del_img)
 
-             fetch("/api/content/update", {
+              fetch("/api/content/update", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -73,14 +71,14 @@ const ContentUpdate = () => {
                 title: title,
                 content: content,
                 id : id,
-                new_img : img_arr,
+                img_arr : img_arr,
                 del_img : del_img,
                 category : category
             }),
             }).then((response) => {
                 if(response.status == 200)
                 navigate(`/content/${1}`)
-            })   
+            })  
         
     }
     const handleChange = e => {
@@ -114,6 +112,9 @@ const ContentUpdate = () => {
 
     return(
             <div className="project-header text-left">
+                 <h1>게시글 수정</h1>
+            <hr/>
+                <br/>
             <div className="write">
                 <form>
                 <select name='category'>

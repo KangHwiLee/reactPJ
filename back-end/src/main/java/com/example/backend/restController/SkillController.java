@@ -3,6 +3,7 @@ package com.example.backend.restController;
 import com.example.backend.entity.Content;
 import com.example.backend.entity.Skill;
 import com.example.backend.repository.SkillRepository;
+import com.sun.management.OperatingSystemMXBean;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.management.ManagementFactory;
 import java.util.HashMap;
 
 @RestController
@@ -41,9 +43,17 @@ public class SkillController {
     }
 
     @GetMapping("/skill/title/{id}")
-    public String skill_title(@PathVariable long id){
-        skillRepository.findById(id);
-        return "";
+    public Skill skill_title(@PathVariable long id){
+
+        return skillRepository.findById(id).orElseThrow(NullPointerException::new);
+    }
+
+    @PostMapping("/chart/data")
+    public int chart_data(){
+        OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
+        double cpuUsage = osBean.getSystemCpuLoad() * 100;
+        System.out.println(cpuUsage);
+        return (int)cpuUsage;
     }
 
 }

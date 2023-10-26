@@ -71,9 +71,6 @@ const navigate = useNavigate();
                     {next === true ? <li onClick={() => paging(endPage)}>&gt;</li> : ""}
                 </ul>
             </div>
-            <div className="register-btn">
-                <button onClick={() => navigate('/write')}>글쓰기</button>
-            </div>
         </div>
     );
 }

@@ -226,6 +226,7 @@ body {
 
 .write-btn {
   float:right;
+  padding: 20px;
 }
 
 .write-btn button{
@@ -233,6 +234,7 @@ body {
   border-radius: 20px;
   border:0px;
   color: white;
+  margin-left:20px;
 }
 
 .register-btn button{
@@ -240,6 +242,7 @@ body {
   border-radius: 20px;
   border:0px;
   color: white;
+
 }
 
 .write{

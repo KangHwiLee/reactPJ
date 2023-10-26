@@ -29,44 +29,13 @@ const ContentDetail = () => {
               }
         })
     }, [])
-    /* useEffect(() => {
-        if(document.getElementById("write-content") != null) return;
-        fetch("/api/content/detail/"+id)
-        .then(response => {return response.json()})
-        .then(json => {
-            setTitle(json.title)
-            var content = JSON.parse(json.content);
-            var keys = Object.keys(content);
-           
-            const div = document.createElement("div");
-            const form = document.querySelector("form");
-            var container = "";
-            for (var i=0; i<keys.length; i++) {
-                var key = keys[i];
-                container += content[key];
-            }
-            
-            div.innerHTML = container
-            console.log(div);
-            form.appendChild(div);
-            
-            var img = JSON.parse(json.img_json)
-            var imgKeys = Object.keys(img);
-            var img_arr = [];
-            for (var i=0; i<imgKeys.length; i++) {
-                var key = imgKeys[i];
-                img_arr.push(img[key])
-            }
-            console.log(img_arr)
-            const img_list = document.getElementsByTagName('img');
-
-            for(let i = 1; i < img_list.length; i++)  {
-                console.log(img_list[i]);
-                img_list[i].src = "/upload/"+img_arr[i-1]
-              }
+    const contentDelete = () => {
+        fetch("/api/content/delete/"+id, {
+            method : 'delete',
+        }).then((response) => {
+            if(response.ok) navigate(`/content/${1}`)
         })
-    }, []) */
-    
+    }
     return(
             <div className="project-header text-left">
             <div className="write">
@@ -82,6 +51,7 @@ const ContentDetail = () => {
             </div>
             <div className="write-btn">
                 <button onClick={() => navigate(`/content_update/${id}`)}>수정</button>
+                <button onClick={() => contentDelete()}>삭제</button>
             </div>
           </div>
     )

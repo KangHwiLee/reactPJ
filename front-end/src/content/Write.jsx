@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { createRef, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import $ from "jquery";
@@ -7,7 +6,6 @@ const Write = () => {
 
 
     const navigate = useNavigate();
-    const textareaRef = createRef();
 
     const [line, setLine] = useState(1)
     const [title, setTitle] = useState("");
@@ -91,7 +89,6 @@ const Write = () => {
                     <hr/>
                     <div id="write-content" className='contentEdit text-left'
                     contentEditable={true} 
-                    ref={textareaRef}
                     name='content'
                     ></div>
                 </form>
