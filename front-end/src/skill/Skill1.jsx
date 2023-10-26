@@ -35,7 +35,7 @@ const Skill1 = () => {
     const { data, options } = chartDataAndOptions;
     const [chartData, setChartData] = useState({...data});
     const [chartKey, setChartKey] = useState(0);
-    useEffect(() => {
+    useEffect(() => { 
 
         var id = location.pathname.replace("/skill", "");
         console.log(id)
