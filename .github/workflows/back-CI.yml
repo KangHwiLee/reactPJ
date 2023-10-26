@@ -32,4 +32,4 @@ jobs:
     - name: Build with Gradle
       working-directory: back-end
       run: 
-        ./back-end/gradlew build
+        ./gradlew build
