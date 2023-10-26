@@ -52,6 +52,7 @@ public class SkillController {
     public int chart_data(){
         OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
         double cpuUsage = osBean.getSystemCpuLoad() * 100;
+        System.out.println("test");
         return (int)cpuUsage;
     }
 
