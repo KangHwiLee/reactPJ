@@ -279,7 +279,7 @@ body {
 }
 .write .contentEdit img{
   margin:0px 5px 0px 5px;
-  width:20%;
+  max-height:600px;
 }
 .pagination{
   width: 100%;
@@ -297,4 +297,58 @@ body {
 .pagination li{
   display: inline;
   margin:10px;
+}
+
+.tmap-info{
+  width:100%;
+  padding: 20px 0px 20px 0px;
+  height:250px;
+}
+
+.tmap-info .field-info{
+  float:left;
+  border:1px solid;
+  width:45%;
+  height:250px;
+}
+.tmap-info h2{
+  padding: 10px 0px 10px 10px;
+  
+}
+.tmap-info .field-info ul{
+  padding-top: 10px;
+}
+.tmap-info .field-info li{
+  margin-bottom:15px;
+  cursor: pointer;
+}
+.field-info{
+  margin-bottom: 40px;
+}
+.tmap-info .field-info2{
+  position:relative;
+  float:right;
+  border:1px solid;
+  width:50%;
+  height:250px;
+  overflow: hidden;
+}
+.tmap-info .field-info2 input{
+  max-width:90%;
+  padding:10px 0px 10px 20px;
+  margin-top:0px;
+}
+.tmap-info .field-info2 p{
+  max-width:90%;
+  padding:10px 0px 10px 20px;
+  margin-top:0px;
+}
+.loading_gif{
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
 }

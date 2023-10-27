@@ -101,7 +101,7 @@ const ContentUpdate = () => {
                       newArray.push(reader.result)
                       const div = document.getElementById('write-content');
                       const img = document.createElement('img')
-                      img.style.width = '20%'
+                      img.style.maxHeight = '600px';
                       img.src = reader.result
                       div.append(img)
                       setImgSrc(newArray);

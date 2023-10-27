@@ -38,7 +38,6 @@ const Skill1 = () => {
     useEffect(() => { 
 
         var id = location.pathname.replace("/skill", "");
-        console.log(id)
         fetch("/api/skill/title/"+id)
         .then(response => {return response.json()})
         .then(json => {

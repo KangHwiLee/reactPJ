@@ -1,7 +1,9 @@
 package com.example.backend.restController;
 
 import com.example.backend.entity.Content;
+import com.example.backend.entity.Field;
 import com.example.backend.entity.Skill;
+import com.example.backend.repository.FieldRepository;
 import com.example.backend.repository.SkillRepository;
 import com.sun.management.OperatingSystemMXBean;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.lang.management.ManagementFactory;
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -20,6 +23,7 @@ import java.util.HashMap;
 public class SkillController {
 
     private final SkillRepository skillRepository;
+    private final FieldRepository fieldRepository;
 
     @GetMapping("/skill/paging")
     public HashMap<String, Object> content_paging(@PageableDefault(size=7, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
@@ -53,6 +57,13 @@ public class SkillController {
         OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
         double cpuUsage = osBean.getSystemCpuLoad() * 100;
         return (int)cpuUsage;
+    }
+
+    // ========================= 여기부터는 tmap api ==========================
+
+    @PostMapping("/tmap/field_list")
+    public List<Field> field_list(){
+        return fieldRepository.findAll();
     }
 
 }
