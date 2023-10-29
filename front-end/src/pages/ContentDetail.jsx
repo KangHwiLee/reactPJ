@@ -8,7 +8,7 @@ const ContentDetail = () => {
     console.log(id);
     const [title, setTitle] = useState("제목");
     useEffect(() => {
-        fetch("/api/content/detail/"+id)
+        fetch("http://localhost:8080/api/content/detail/"+id)
         .then(response => {return response.json()})
         .then(json => {
             setTitle(json.title)
@@ -30,7 +30,7 @@ const ContentDetail = () => {
         })
     }, [])
     const contentDelete = () => {
-        fetch("/api/content/delete/"+id, {
+        fetch("http://localhost:8080/api/content/delete/"+id, {
             method : 'delete',
         }).then((response) => {
             if(response.ok) navigate(`/content/${1}`)

@@ -51,7 +51,7 @@ const Write = () => {
                 img_list[i].src = "";
               }
               const content = document.getElementById("write-content").innerHTML;
-              fetch("/api/content/write", {
+              fetch("http://localhost:8080/api/content/write", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

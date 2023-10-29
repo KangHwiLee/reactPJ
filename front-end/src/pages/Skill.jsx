@@ -16,7 +16,7 @@ const Skill = () => {
     }, [])
 
 const paging = (n) => {
-    fetch("/api/skill/paging")
+    fetch("http://localhost:8080/api/skill/paging")
         .then(response => {return response.json()})
         .then(json => {
             page = json;

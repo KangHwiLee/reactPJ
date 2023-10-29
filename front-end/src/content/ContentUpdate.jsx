@@ -10,7 +10,7 @@ const ContentUpdate = () => {
     const [img_origin, setImg_origin] = useState([]);
 
     useEffect(() => {
-        fetch("/api/content/update/"+id)
+        fetch("http://localhost:8080/api/content/update/"+id)
         .then(response => {return response.json()})
         .then(json => {
             console.log(json)
@@ -62,7 +62,7 @@ const ContentUpdate = () => {
           const content = document.getElementById("write-content").innerHTML;
 
 
-              fetch("/api/content/update", {
+              fetch("http://localhost:8080/api/content/update", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

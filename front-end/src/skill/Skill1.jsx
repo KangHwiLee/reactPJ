@@ -38,7 +38,7 @@ const Skill1 = () => {
     useEffect(() => { 
 
         var id = location.pathname.replace("/skill", "");
-        fetch("/api/skill/title/"+id)
+        fetch("http://localhost:8080/api/skill/title/"+id)
         .then(response => {return response.json()})
         .then(json => {
             console.log(json) 
@@ -49,7 +49,7 @@ const Skill1 = () => {
     var timer = null;
     useEffect(() => {
         timer = setInterval(() => {
-            fetch("/api/chart/data", {
+            fetch("http://localhost:8080/api/chart/data", {
                 method : "post"
             })
             .then(response => {
