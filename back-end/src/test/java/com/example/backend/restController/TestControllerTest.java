@@ -28,7 +28,7 @@ class TestControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    @DisplayName("test입니다")
+    @DisplayName("test")
     void junit_test() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/users/1")
                         .contentType(MediaType.APPLICATION_JSON))
