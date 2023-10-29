@@ -9,6 +9,7 @@ import ContentUpdate from "../content/ContentUpdate";
 import Skill from "../pages/Skill";
 import Skill1 from "../skill/Skill1";
 import Skill2 from "../skill/Skill2";
+import Skill3 from "../skill/Skill3";
 const Home = () => {
     return(
         <div className="home">
@@ -24,6 +25,7 @@ const Home = () => {
                     {/* 여기부터 스킬 jsx 전부 route */}
                     <Route path='/skill1' element={<Skill1/>} />
                     <Route path='/skill2' element={<Skill2/>} />
+                    <Route path='/skill3' element={<Skill3/>} />
                     
                 </Routes>
         </div>

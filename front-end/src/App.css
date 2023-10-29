@@ -352,3 +352,19 @@ body {
   width: 40px;
   height: 40px;
 }
+
+.tmap-info .weather-info{
+  float:left;
+  border:1px solid;
+  width:20%;
+  height:400px;
+}
+
+.tmap-info .weather-info2{
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border:1px solid;
+  width:70%;
+  height:400px;
+}
