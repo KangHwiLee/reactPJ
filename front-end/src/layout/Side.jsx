@@ -28,6 +28,7 @@ const Header = () => {
         else if (location.pathname == "/content/1") num = 3;
         else if (location.pathname == "/content/2") num = 4;
         else if (location.pathname == "/content/3") num = 5;
+        else if (location.pathname == "/content/7") num = 5;
         else if (location.pathname == "/skill") num = 6;
         console.log(num)
         if(num > 1 && num < 6){
@@ -68,6 +69,7 @@ const Header = () => {
                             <Link to={`/content/${1}`} className={active[3]} onClick={() => changeActive(3)}><p style={{fontSize:"14px"}}>전체</p></Link>
                             <Link to={`/content/${2}`} className={active[4]} onClick={() => changeActive(4)}><p style={{fontSize:"14px"}}>스프링</p></Link>
                             <Link to={`/content/${3}`} className={active[5]} onClick={() => changeActive(5)}><p style={{fontSize:"14px"}}>리액트</p></Link>
+                            <Link to={`/content/${4}`} className={active[7]} onClick={() => changeActive(7)}><p style={{fontSize:"14px"}}>기타</p></Link>
                         </div>
                     <li><Link to={"/project"} className={active[1]} onClick={() => changeActive(1)}>Projects</Link></li>
                     <li><Link to={"/skill"} className={active[6]} onClick={() => changeActive(6)}>Skill</Link></li>

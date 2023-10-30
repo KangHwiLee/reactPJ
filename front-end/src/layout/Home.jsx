@@ -4,7 +4,7 @@ import Introduce from "../pages/Introduce";
 import Content from "../pages/Content";
 import Project from "../pages/Project";
 import Write from "../content/Write";
-import ContentDetail from "../pages/ContentDetail";
+import ContentDetail from "../content/ContentDetail";
 import ContentUpdate from "../content/ContentUpdate";
 import Skill from "../pages/Skill";
 import Skill1 from "../skill/Skill1";

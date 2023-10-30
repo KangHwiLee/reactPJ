@@ -45,6 +45,7 @@ public class BoardController {
         content.setTitle(title);
         content.setContent(contentValue);
         content.setImg_json(img_arr.toString());
+        content.setCategory((int) map.get("category"));
         contentRepository.save(content);
 
         return ResponseEntity.ok().build();
@@ -111,6 +112,7 @@ public class BoardController {
         content.setTitle(title);
         content.setContent(contentValue);
         content.setImg_json(img_arr.toString());
+        content.setCategory((int) map.get("category"));
         contentRepository.save(content);
 
         return ResponseEntity.ok().build();

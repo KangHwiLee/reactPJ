@@ -73,7 +73,7 @@ const ContentUpdate = () => {
                 id : id,
                 img_arr : img_arr,
                 del_img : del_img,
-                category : category
+                category : Number(category)
             }),
             }).then((response) => {
                 if(response.status == 200)
@@ -119,8 +119,9 @@ const ContentUpdate = () => {
                 <form>
                 <select name='category'>
                         <option value="0">카테고리 선택</option>
-                        <option value="1">스프링</option>
-                        <option value="2">리액트</option>
+                        <option value="2">스프링</option>
+                        <option value="3">리액트</option>
+                        <option value="4">기타</option>
                     </select>
                 <input type="text" name="title" 
                     value={title}

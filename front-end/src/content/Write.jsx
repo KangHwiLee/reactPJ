@@ -60,7 +60,7 @@ const Write = () => {
                     title: title,
                     content: content,
                     img : img_arr,
-                    category : category
+                    category : Number(category)
                 }),
                 }).then((response) => {
                     if(response.status == 200)
@@ -80,6 +80,7 @@ const Write = () => {
                         <option value="0">카테고리 선택</option>
                         <option value="2">스프링</option>
                         <option value="3">리액트</option>
+                        <option value="4">기타</option>
                     </select>
                     <input type="text" name="title" 
                     placeholder="제목을 입력하세요" 
