@@ -51,7 +51,7 @@ const Write = () => {
                 img_list[i].src = "";
               }
               const content = document.getElementById("write-content").innerHTML;
-              fetch("http://localhost:8080/api/content/write", {
+              fetch("/api/content/write", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -78,8 +78,8 @@ const Write = () => {
                 <form>
                     <select name='category'>
                         <option value="0">카테고리 선택</option>
-                        <option value="1">스프링</option>
-                        <option value="2">리액트</option>
+                        <option value="2">스프링</option>
+                        <option value="3">리액트</option>
                     </select>
                     <input type="text" name="title" 
                     placeholder="제목을 입력하세요" 

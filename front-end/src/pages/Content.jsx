@@ -17,7 +17,7 @@ const Content = () => {
     }, [p_category])
 
 const paging = (n) => {
-    fetch("http://localhost:8080/api/content/paging?page="+n+"&category="+p_category)
+    fetch("/api/content/paging?page="+n+"&category="+p_category)
         .then(response => {return response.json()})
         .then(json => {
             page = json;

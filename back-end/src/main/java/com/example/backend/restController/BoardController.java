@@ -61,7 +61,7 @@ public class BoardController {
         JSONObject img_arr = new JSONObject();
 
         // 이미지를 저장할 디렉토리 설정
-        String uploadDirectory = "C:/var/webapps/upload/react/"+id;
+        String uploadDirectory = "/var/webapps/upload/react/"+id;
         File folder = new File(uploadDirectory);
         if (img instanceof List) {
             // List로 형변환
@@ -157,7 +157,7 @@ public class BoardController {
     @DeleteMapping("/content/delete/{id}")
     public ResponseEntity contentDelete(@PathVariable long id){
         contentRepository.deleteById(id);
-        String uploadDirectory = "C:/var/webapps/upload/react/"+id;
+        String uploadDirectory = "/var/webapps/upload/react/"+id;
         File folder = new File(uploadDirectory);
         try {
             if (folder.exists()) {

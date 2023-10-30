@@ -17,7 +17,7 @@ const initTmap = () => {
   }
 
   const setMarker = (map) => {
-    fetch("http://localhost:8080/api/tmap/field_list", {
+    fetch("/api/tmap/field_list", {
       method : 'post'
     })
     .then((response) => {return response.json()})

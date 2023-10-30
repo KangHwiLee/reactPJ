@@ -15,13 +15,13 @@ const Skill2 = () => {
     useEffect(() => { 
 
         var id = location.pathname.replace("/skill", "");
-        fetch("http://localhost:8080/api/skill/title/"+id)
+        fetch("/api/skill/title/"+id)
         .then(response => {return response.json()})
         .then(json => {
             $('form h1').html(json.title)
           })
           
-          fetch("http://localhost:8080/api/tmap/field_list", {
+          fetch("/api/tmap/field_list", {
             method : 'post'
           })
           .then((response) => {return response.json()})

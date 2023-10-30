@@ -11,7 +11,7 @@ const Skill3 = () => {
     useEffect(() => { 
 
         var id = location.pathname.replace("/skill", "");
-        fetch("http://localhost:8080/api/skill/title/"+id)
+        fetch("/api/skill/title/"+id)
         .then(response => {return response.json()})
         .then(json => {
             $('#title').html(json.title)
@@ -30,7 +30,7 @@ const Skill3 = () => {
 
 
       function town_weather(lati, loni){
-        fetch("http://localhost:8080/api/town_weather",{
+        fetch("/api/town_weather",{
             method : "post"
             ,
             headers: {
@@ -71,7 +71,7 @@ const Skill3 = () => {
 
       function now_weather(lati ,loni) {
         var date = new Date();
-        fetch("http://localhost:8080/api/now_weather",{
+        fetch("/api/now_weather",{
             method : "post"
             ,
             headers: {
