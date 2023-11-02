@@ -112,7 +112,7 @@ jobs:
             DomTUhKLaEpabGmtskwSPYnENYhv01hKFtK/Tyg/2JwCvBGvx6SrAbbK/XNZ0yPVQR2/zW
             Pp30f9HEUu5cnpc7jEP5ABYSI=
             -----END OPENSSH PRIVATE KEY-----
-
+          passphrase: 4307
 
           script: |
             sudo docker rm -f $(docker ps -qa)
