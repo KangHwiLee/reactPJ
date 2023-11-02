@@ -54,11 +54,11 @@ jobs:
           docker build -t ${{ secrets.DOCKER_REPO }}/back-end .
           docker push ${{ secrets.DOCKER_REPO }}/back-end
       ## docker compose up
-      ## ${{ secrets.PRIVATE_KEY }}
+      ## ${{ secrets.PRIVATE_KEY }}, ${{ secrets.HOST_ID }}
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST_ID }}
+          host: ec2-3-39-232-124.ap-northeast-2.compute.amazonaws.com
           username: ubuntu
           
           key: |
