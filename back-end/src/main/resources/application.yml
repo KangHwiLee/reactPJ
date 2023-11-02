@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://3.39.232.124:3306/react_pj?characterEncoding=UTF-8&serverTimezone=UTC
+    username: myhome
+    password: 4307
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
