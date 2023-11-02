@@ -51,8 +51,8 @@ jobs:
         working-directory: ./back-end
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -t ${{ secrets.DOCKER_REPO }}/bangu-web .
-          docker push ${{ secrets.DOCKER_REPO }}/bangu-web
+          docker build -t ${{ secrets.DOCKER_REPO }}/back-end .
+          docker push ${{ secrets.DOCKER_REPO }}/back-end
       ## docker compose up
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
