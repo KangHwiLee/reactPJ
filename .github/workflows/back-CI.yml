@@ -54,12 +54,41 @@ jobs:
           docker build -t ${{ secrets.DOCKER_REPO }}/back-end .
           docker push ${{ secrets.DOCKER_REPO }}/back-end
       ## docker compose up
+      ## ${{ secrets.PRIVATE_KEY }}
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_ID }}
           username: ec2-user
-          key: ${{ secrets.PRIVATE_KEY }}
+          
+          key: |
+            -----BEGIN RSA PRIVATE KEY-----
+            MIIEpAIBAAKCAQEAiDa342ECKPeGxpfvGMKKukbk4Fwk88lLyJm7akxAlYz7LK5K
+            t7li+EpW1ojYFm8r0WIYfZUxFaF5bZS/wGaeRIAqTevk/T9Y6Vh79/SBiPYyZiGB
+            u3tco4/h/bB/kLZApUmmEDomCwOgunfhngcMyz6uF9oC5gz+6sJ8vrH4w9tiqKCs
+            d4i3XZrQenB1S+7nH61+dju6PDBfx+EXCXu+swsuCTpiwd4Waj7gEM0cUsoy+dF3
+            1k51SWAsnsWbicaPynBs6SSVkH1HMWOp79HW2BWxIji++Ea9Qo2rT9P/VH7gJOJE
+            sETKnwQeLA6oycyr9FeOVkB9j8wGME5tVQtMawIDAQABAoIBACrwLMl1hAvL82VY
+            8Zr5gGe1/2ImSdO7ibMjmuuoO9eoyGjOTGlb/DHOpU8ddhikVMi9RoEX7ZAnBbMg
+            Z83Ly2pGiI9lpBqcxHdSWEnSfp7hFQQS3eVuvsYkjhW9dIj2mqw/6iRFYEaqjxkY
+            vztkd4j+Kj0EkVNZl2YDhvVJ/uQmJZHE+xHp5OR6/z1XYEXU9FNhQPXpjCTZM1vA
+            PbzU8YU/7Ya5Oymw5f1XTCVUSdY+xY4Xy6Fj+3XpkLC65zEns+4iFy8Qcwt7f1xf
+            tsC0myZKIWxgED1guhjo1f8RZznlhAVe6VcOTx36el/fKyUr8QYeUSbaGNFoevSe
+            4cI3W+kCgYEA3ifhLJLEh+9lApeWgM6xPehVCiZg2lIRhafeIXdvBCXnW/uHdfPH
+            u0Jcm+bADkLN9fTpOn06tA2Fb/o0Vms1uYWqBr6riQcezARJ/0N5342QmIHOCox2
+            Jfj15/tLStSfcgNcROpvXNGp43HWQgk08tALRcEZlaoa7optDMigQw8CgYEAnPcU
+            95LrbqLKHIte7DWApgcCv8mlikVILQBUudqhvzIhOJYyScsTTJ4MKBOw5VYzlQbS
+            1IllrZtOrbHeaMUDJjjN6rr27CVDInczoC9FEgieDn8QkoY/J/o2Y+co82iOB7o2
+            9+3jVItYz/f5Sk8lSJMstMW8mgJZnWpA6ZMbsOUCgYEAo5gQfKdz7HqBEuCYZzBO
+            Wz1s6jWK2xrWZmtQ66os6YwUDKt0fIrRyXc8BV5ujdHqI7Z/zZ+MjCzs16ITypPW
+            k1D3/VGJtjW1Gx4Jc923sMVp9rSYCzKWiq4EQBnQv0FGTUpmNyXAbkTDa4dX9Xcc
+            M7a6plplwc3rWUA8v846HkcCgYEAjzQA5godTxenyzkABgKd91soD++ZXrfsrFnD
+            8rfbn4LNukGVaaujVOBQePPWDLWDY/AQwyUDJcsukdtX7T/oqqNigkfG5RTt1fDo
+            objejCBeix0z8moWDpQBsU2BF+kIw1YJtlJLd6OWCE7VGg1xF3Bmdhp9Agko1yvM
+            Qw0aU10CgYBzEWnRHgO0/54T3KJw6D90v5tj6WWHpJSNIMKHH7SyFvpbYCJioMVF
+            VconDAAofEk7Fb/PbzLm15ONnjy6RmQJv1zxf0qk/h5XAESmqjaQn4fPu1mzXkD/
+            x9lFX82TYQksAANdj+iqMSrfM6zYPbBNyuO2yZCv1clexhlX1+MmHA==
+            -----END RSA PRIVATE KEY-----
           script: |
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKER_REPO }}/bangu-web
