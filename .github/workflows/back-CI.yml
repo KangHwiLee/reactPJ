@@ -115,4 +115,7 @@ jobs:
 
 
           script: |
-            whoami
+            sudo docker rm -f $(docker ps -qa)
+            sudo docker pull ${{ secrets.DOCKER_REPO }}/bangu-web
+            docker-compose up -d
+            docker image prune -f
