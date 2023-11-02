@@ -38,6 +38,7 @@ jobs:
         shell: bash
 
       - name: Grant execute permission for gradlew
+        working-directory: ./back-end
         run: chmod +x gradlew
       
       # Build
