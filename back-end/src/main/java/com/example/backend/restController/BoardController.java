@@ -101,7 +101,7 @@ public class BoardController {
                 item = item.replace("http://localhost:3000/upload/"+id+"/", "");
                 for (int i = 0; i < folder_list.length; i++) {
                     if(folder_list[i].getName().equals(item)){
-                    folder_list[i].delete(); //파일 삭
+                    folder_list[i].delete(); //파일 삭w
                     }
                 }
             }
