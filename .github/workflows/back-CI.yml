@@ -66,5 +66,6 @@ jobs:
           script: |
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKER_REPO }}/back-end
-            ./docker/back-docker/docker-compose up -d
+            cd ./docker/back-docker
+            docker-compose up -d
             docker image prune -f
