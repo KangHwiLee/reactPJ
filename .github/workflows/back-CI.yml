@@ -24,7 +24,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ec2-3-39-232-124.ap-northeast-2.compute.amazonaws.com
-          username: test
+          username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           passphrase: 4307
 
