@@ -30,3 +30,6 @@ jobs:
 
           script: |
             whoami
+            echo && host
+            echo "$HOST"
+            ls -a
