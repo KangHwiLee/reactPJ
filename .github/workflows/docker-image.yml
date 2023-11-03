@@ -17,14 +17,11 @@ jobs:
 
       - name: Check Node v            # Node v 확인
         run: node -v
-        
-      - name: Install dependencies    # 의존 파일 설치
-        working-directory: ./front-end
-        run: npm install
       
       - name: Generate build          # React Build
         working-directory: ./front-end
-        run: npm run build
+        run: npm install
+             npm run build
       
       - name: Docker build
         run : docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
