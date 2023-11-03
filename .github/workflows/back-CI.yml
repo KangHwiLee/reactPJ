@@ -18,7 +18,7 @@ jobs:
     # 실행 환경 지정
     runs-on: ubuntu-22.04
     # Task의 sequence를 명시한다.
-    # ${{ secrets.PRIVATE_KEY }}
+    # ${{ secrets.PRIVATE_KEY }} test
     steps:
       - uses: actions/checkout@v2
       - name: executing remote ssh commands using password
