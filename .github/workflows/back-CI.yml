@@ -27,7 +27,6 @@ jobs:
           host: ec2-3-39-232-124.ap-northeast-2.compute.amazonaws.com
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
-          passphrase: 4307
 
           script: |
             whoami
