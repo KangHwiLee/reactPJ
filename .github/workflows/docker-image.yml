@@ -24,6 +24,7 @@ jobs:
              npm run build
       
       - name: Docker build
+        working-directory: ./front-end
         run : docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
               docker build -t ${{ secrets.DOCKER_REPO }}/front-end .
               docker push ${{ secrets.DOCKER_REPO }}/front-end 
