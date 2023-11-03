@@ -10,8 +10,8 @@ name: Spring Boot & Gradle CI/CD
 on:
   push:
     branches: [ master ]
-    paths:
-        - "back-end/**"
+#    paths:
+#        - "back-end/**"
 
 jobs:
   build:
