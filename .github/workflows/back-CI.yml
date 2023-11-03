@@ -18,6 +18,7 @@ jobs:
     # 실행 환경 지정
     runs-on: ubuntu-22.04
     # Task의 sequence를 명시한다.
+    # ${{ secrets.PRIVATE_KEY }}
     steps:
       - uses: actions/checkout@v2
       - name: executing remote ssh commands using password
@@ -25,7 +26,58 @@ jobs:
         with:
           host: ec2-3-39-232-124.ap-northeast-2.compute.amazonaws.com
           username: ubuntu
-          key: ${{ secrets.PRIVATE_KEY }}
+          key: |
+            -----BEGIN OPENSSH PRIVATE KEY-----
+            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
+            UQ2TaGwOfuSPQplfIfjbor1xk=
+            -----END OPENSSH PRIVATE KEY-----
+
           passphrase: 4307
 
           script: |
