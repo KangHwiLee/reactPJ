@@ -28,6 +28,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           passphrase : 4307
+          port : 22
           script: |
             whoami
             echo && host
