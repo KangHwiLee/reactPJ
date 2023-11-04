@@ -29,8 +29,11 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t ${{ secrets.DOCKER_REPO }}/front-end .
-          docker push ${{ secrets.DOCKER_REPO }}/front-end 
+          docker push ${{ secrets.DOCKER_REPO }}/front-end
 
+          
+#            sudo docker rm -f $(docker ps -qa)
+      
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
@@ -39,8 +42,9 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           passphrase : ${{ secrets.PASSPHRASE }}
           port : ${{ secrets.PORT }}
-          script: |
-            sudo docker rm -f $(docker ps -qa)
+          script: | 
+            sudo docker stop front-end
+            sudo docker rm front-end
             sudo docker pull ${{ secrets.DOCKER_REPO }}/front-end
             cd ./docker/front-docker
             docker-compose up -d
