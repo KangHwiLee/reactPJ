@@ -1,10 +1,11 @@
-name: Docker Image CI
+name: Front CI
 
 on:
   push:
     branches: [ "master" ]
-#    paths:
-#        - "front-end/**"
+    paths:
+        - "front-end/**"
+        - ".github/workflows/front-CI.yml
 
 jobs:
   build:
