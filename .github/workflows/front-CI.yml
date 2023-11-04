@@ -5,7 +5,7 @@ on:
     branches: [ "master" ]
     paths:
         - "front-end/**"
-        - ".github/workflows/front-CI.yml
+        - ".github/workflows/front-CI.yml"
 
 jobs:
   build:
