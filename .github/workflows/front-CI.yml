@@ -7,7 +7,7 @@ on:
         - "front-end/**"
         - ".github/workflows/front-CI.yml"
 
-jobs:
+jobs: 
   build:
     # 실행 환경 지정
     runs-on: ubuntu-22.04
