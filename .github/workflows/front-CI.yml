@@ -30,3 +30,18 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t ${{ secrets.DOCKER_REPO }}/front-end .
           docker push ${{ secrets.DOCKER_REPO }}/front-end 
+
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_ID }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          passphrase : ${{ secrets.PASSPHRASE }}
+          port : ${{ secrets.PORT }}
+          script: |
+            sudo docker rm -f $(docker ps -qa)
+            sudo docker pull ${{ secrets.DOCKER_REPO }}/front-end
+            cd ./docker/front-docker
+            docker-compose up -d
+            docker image prune -f
