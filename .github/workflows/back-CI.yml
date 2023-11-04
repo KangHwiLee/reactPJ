@@ -12,6 +12,7 @@ on:
     branches: [ master ]
     paths:
         - "back-end/**"
+        - "workflows/back-CI.yml"
 
 jobs:
   build:
