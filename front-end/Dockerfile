@@ -31,6 +31,8 @@ RUN rm /etc/nginx/conf.d/default.conf
 # custom 설정파일을 컨테이너 내부로 복사한다.
 COPY nginx/nginx.conf /etc/nginx/conf.d
 
+# letsEncrypt options-ssl-nginx.conf, ssl-dhparams.pem 마운트 하기 위한 폴더 생성
+RUN mkdir sslTest
 # 컨테이너의 80번 포트를 열어준다.
 EXPOSE 80
 
