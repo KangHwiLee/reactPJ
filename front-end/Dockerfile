@@ -19,6 +19,9 @@ COPY . .
 # npm build
 RUN npm run build
 
+
+# -------------------------------------------------- nginx -----------------------------------------------------------
+
 # prod environment
 FROM nginx:stable-alpine
 
