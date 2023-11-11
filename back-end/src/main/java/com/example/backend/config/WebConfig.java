@@ -24,7 +24,8 @@ public class WebConfig implements WebMvcConfigurer {
                                 "http://172.17.0.1",
                                 "http://3.39.232.124:81",
                                 "http://3.39.232.124:3000",
-                                "http://127.0.0.1")
+                                "http://127.0.0.1",
+                                "8letter.store")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("Authorization", "Content-Type")
                 .exposedHeaders("Custom-Header")
