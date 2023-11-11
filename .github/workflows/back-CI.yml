@@ -66,7 +66,8 @@ jobs:
           passphrase : ${{ secrets.PASSPHRASE }}
           port : ${{ secrets.PORT }}
           script: |
-            sudo docker rm -f $(docker ps -qa)
+            sudo docker stop back-end
+            sudo docker rm back-end
             sudo docker pull ${{ secrets.DOCKER_REPO }}/back-end
             cd ./docker/back-docker
             docker-compose up -d
