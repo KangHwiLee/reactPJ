@@ -4,6 +4,7 @@ import org.json.simple.JSONObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -38,7 +39,8 @@ public class ContentService {
                     System.out.println("이미지 경로 확인? : "+ !Files.exists(directoryPath));
                     if (!Files.exists(directoryPath)) {
                         System.out.println("여긴 와졌나");
-                        Files.createDirectories(directoryPath);
+                        new File(directoryPath.toString()).mkdir();
+//                        Files.createDirectories(directoryPath);
                         System.out.println("여긴 22");
                     }
 
