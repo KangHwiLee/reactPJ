@@ -37,7 +37,9 @@ public class ContentService {
                     Path directoryPath = Paths.get(uploadDirectory);
                     System.out.println("이미지 경로 확인? : "+ !Files.exists(directoryPath));
                     if (!Files.exists(directoryPath)) {
+                        System.out.println("여긴 와졌나");
                         Files.createDirectories(directoryPath);
+                        System.out.println("여긴 22");
                     }
 
                     // 이미지 파일을 저장
@@ -47,6 +49,7 @@ public class ContentService {
                     Files.write(filePath, imageBytes);
                     img_arr.put(index, id+"/"+filename);
                     index++;
+                    System.out.println("여기까진 와지나?");
                 } catch (IOException e) {
                     System.out.println(e);
                 }
