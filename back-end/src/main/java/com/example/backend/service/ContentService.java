@@ -30,7 +30,7 @@ public class ContentService {
                     byte[] imageBytes = Base64.getMimeDecoder().decode(base64Image);
 
                     // 이미지를 저장할 디렉토리 설정
-                    String uploadDirectory = "C:/var/webapps/upload/react/"+id;
+                    String uploadDirectory = "/var/webapps/upload/react/"+id;
 
                     // 디렉토리가 없으면 생성
                     Path directoryPath = Paths.get(uploadDirectory);
