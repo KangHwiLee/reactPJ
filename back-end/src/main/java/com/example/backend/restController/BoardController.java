@@ -39,7 +39,6 @@ public class BoardController {
         String contentValue = (String)map.get("content");
         Object imgList = map.get("img");
         Long id = contentRepository.findByLastId();
-        System.out.println(imgList);
         JSONObject img_arr = contentService.img_upload(imgList, id+1);
 
         Content content = new Content();

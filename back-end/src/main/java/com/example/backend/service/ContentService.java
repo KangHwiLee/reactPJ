@@ -16,6 +16,7 @@ import java.util.UUID;
 public class ContentService {
 
     public JSONObject img_upload(Object imgList, Long id){
+        System.out.println("image_upload 와짐");
         JSONObject img_arr = new JSONObject();
         if (imgList instanceof List) {
             // List로 형변환
@@ -34,6 +35,7 @@ public class ContentService {
                     System.out.println("upload 경로 : " + uploadDirectory);
                     // 디렉토리가 없으면 생성
                     Path directoryPath = Paths.get(uploadDirectory);
+                    System.out.println("이미지 경로 확인? : "+ !Files.exists(directoryPath));
                     if (!Files.exists(directoryPath)) {
                         Files.createDirectories(directoryPath);
                     }
