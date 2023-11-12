@@ -31,7 +31,7 @@ public class ContentService {
 
                     // 이미지를 저장할 디렉토리 설정
                     String uploadDirectory = "/var/webapps/upload/react/"+id;
-
+                    System.out.println("upload 경로 : " + uploadDirectory);
                     // 디렉토리가 없으면 생성
                     Path directoryPath = Paths.get(uploadDirectory);
                     if (!Files.exists(directoryPath)) {
