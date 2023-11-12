@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-    private String resourcePath = "file:///C:/var/webapps/upload/react/";
+    private String resourcePath = "/var/webapps/upload/react/";
     private String uploadPath = "/upload/**";
 
     @Override
