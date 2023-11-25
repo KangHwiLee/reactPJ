@@ -3,9 +3,9 @@ name: Front CI
 on:
   push:
     branches: [ "master" ]
-    #paths:
+    paths:
     #    - "front-end/**"
-    #    - ".github/workflows/front-CI.yml"
+        - ".github/workflows/front-CI.yml"
 
 jobs: 
   build:
